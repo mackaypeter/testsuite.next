@@ -38,7 +38,7 @@ import static org.jboss.hal.testsuite.Selectors.contains;
 @Place(NameTokens.HOMEPAGE)
 public class HomePage extends BasePage {
 
-    private static final String MODULES_SELECTOR = "a[data-element=moduleHeader]";
+    private static final String MODULES_SELECTOR = "a[id=homepage-deployments-module]";
     @FindBy(css = MODULES_SELECTOR) private List<WebElement> modules;
     @FindBy(id = Ids.HEADER_USERNAME) private WebElement userElement;
 
@@ -68,7 +68,7 @@ public class HomePage extends BasePage {
 
     public void logout() {
         userElement.click();
-        By logoutSelector = By.cssSelector("a[data-element=logout]");
+        By logoutSelector = By.xpath("//a[text()='Logout' and @class='clickable']");
         Graphene.waitGui().until().element(logoutSelector).is().clickable();
         browser.findElement(logoutSelector).click();
     }
